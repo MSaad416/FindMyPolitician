@@ -26,14 +26,14 @@ function Location({ location, setLocation }) {
 
   return (
     <div className="container-fluid">
-      <div className="d-flex justify-content-center mt-3">
+      <div className="d-flex justify-content-center pt-4">
         {/* <button onClick={checkLocation}>Get Location</button> */}
         {location.length === 0 ? (
           <button className="btn btn-outline-dark" onClick={checkLocation}>
             Get Location
           </button>
         ) : null}
-        {location.length !== 0 ? `Your location is: ${location[0]}, ${location[1]}` : null}
+        {location.length !== 0 ? `Your location coordinates were found as: ${location[0]}, ${location[1]}` : null}
       </div>
     </div>
   );

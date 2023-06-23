@@ -24,7 +24,7 @@ function PostalCode({ postcode, setPostalcode }) {
   return (
     <div className="container-fluid">
       <div className="container-fluid">
-        <div className="lead d-flex justify-content-center mt-3">Enter your postal code below</div>
+        <div className="lead d-flex justify-content-center pt-4">Enter your postal code below</div>
       </div>
 
       <div className="container-fluid">

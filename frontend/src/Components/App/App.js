@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import ToggleOption from "../ToggleOption";
 import Nav from "../Navigation/Nav";
@@ -7,11 +7,16 @@ import PostalCode from "../PostalCode";
 import Map from "../Map";
 import MainData from "../MainData/MainData";
 import axios from "axios";
+
+// import politics from "./politics.png"
+
 // import Data from "../../data.json";
 
 //  https://represent.opennorth.ca/representatives/house-of-commons/?point=43.885,-79.053
 
 function App() {
+  const [isHovering, setisHovering] = useState(false);
+
   const [toggleData, settoggleData] = useState("null");
 
   // stupid state management: lifting up data states to main app :(
@@ -37,6 +42,23 @@ function App() {
   const handlePostalData = (data) => {
     setPostalcode(data);
   };
+
+  const handleMouseOver = () => {
+    setisHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setisHovering(false);
+  };
+
+  // const handleMouseOut = () => {
+  //   setisHovering(false);
+  //   settoggleData("main");
+  // };
+
+  // const handleShowClick = () => {
+  //   settoggleData("main");
+  // };
 
   // const convertGeoData = async (postalCode) => {
   //   const params = {
@@ -137,7 +159,44 @@ function App() {
   return (
     <div className="App">
       <Nav />
+
       <ToggleOption onToggleData={handleToggleData} />
+
+      {toggleData === "null" && (
+        <>
+          {/* <div className="container-fluid justify-contents-center align-items-center">
+            <div className="d-flex justify-contents-center align-items-center"></div>
+          </div> */}
+          <div className="">
+            <div
+              className="container-fluid mt-5"
+              style={{ maxWidth: "1000px" }}
+              onMouseEnter={handleMouseOver}
+              onMouseOut={handleMouseOut}
+            >
+              <div className="text-center">
+                <div className="position-relative">
+                  <div>
+                    <img
+                      src={require("./politics.png")}
+                      className="img-fluid mx-auto d-block"
+                      alt="..."
+                      style={{ borderRadius: "4%", opacity: 1 }}
+                    />
+                    <div className="overlay">
+                      <h2>
+                        {" "}
+                        Get to know who represents the will of the people in your region. <br></br>{" "}
+                      </h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
       {/* {`Loading: ${isLoading}`} */}
       {/* {console.log(isLoading)}
       {console.log(resData)}
@@ -147,6 +206,7 @@ function App() {
       {/* {setresData(getData(toggleData, location, postalCode))} */}
 
       {console.log(resData)}
+
       {toggleData === "myLocation" && (
         <>
           <Location location={location} setLocation={handleLocationData} />
@@ -160,6 +220,20 @@ function App() {
         </>
       )}
       {toggleData === "mapLocation" && <Map />}
+
+      {/* {isHovering && (
+        <>
+          <div className="text-center pt-5"> Whack Me </div>
+        </>
+      )} */}
+
+      {isLoading === true && (
+        <div className="d-flex justify-content-center">
+          <div className="spinner-border" role="status" style={{ width: "100px", height: "100px" }}>
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      )}
       {/* 
       {console.log(`Bruh: ${postalCode}`)}
       {(dat = getData(toggleData, location, postalCode))}

@@ -37,7 +37,7 @@ function ToggleOption({ onToggleData }) {
   // useEffect(() => {}, [toggle]);
   return (
     <div className="container-fluid">
-      <div className="lead d-flex justify-content-center mt-3">
+      <div className="lead d-flex justify-content-center pt-5">
         To meet your political representatives choose one of the below options.
       </div>
       <div className="d-flex justify-content-center mt-2">
