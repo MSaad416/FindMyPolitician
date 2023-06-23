@@ -1,11 +1,8 @@
 import { useState } from "react";
 import "../Components/App/App";
 
-// import { getData } from "./FetchData";
-
 function PostalCode({ postcode, setPostalcode }) {
   // useState hook init to empty string
-  // const [postalcode, setPostalcode] = useState("");
   const [tempCode, settempCode] = useState("");
 
   const handleChange = (e) => {
@@ -16,9 +13,6 @@ function PostalCode({ postcode, setPostalcode }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     setPostalcode(tempCode);
-    // console.log("XXX");
-    // console.log(event.target.value);
-    // console.log("NOW DUBMITTED");
   };
 
   return (

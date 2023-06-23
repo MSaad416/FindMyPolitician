@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import ToggleOption from "../ToggleOption";
+import ToggleOption from "../ToggleOption/ToggleOption";
 import Nav from "../Navigation/Nav";
 import Location from "../Location";
 import PostalCode from "../PostalCode";
 import Map from "../Map";
 import MainData from "../MainData/MainData";
 import axios from "axios";
-
+import MainArt from "../MainArt/MainArt";
 // import politics from "./politics.png"
 
 // import Data from "../../data.json";
@@ -15,11 +15,9 @@ import axios from "axios";
 //  https://represent.opennorth.ca/representatives/house-of-commons/?point=43.885,-79.053
 
 function App() {
-  const [isHovering, setisHovering] = useState(false);
-
   const [toggleData, settoggleData] = useState("null");
 
-  // stupid state management: lifting up data states to main app :(
+  // stupid state management: lifted data states up to main app :(
   const [location, setLocation] = useState([]);
   const [postalCode, setPostalcode] = useState("");
 
@@ -43,52 +41,9 @@ function App() {
     setPostalcode(data);
   };
 
-  const handleMouseOver = () => {
-    setisHovering(true);
-  };
+  // coOrdinates -> fetch data from OPENNORTH API -> pass state props to components
+  // NEXT TO-DO: SHIFTING this logic to the backend will be better
 
-  const handleMouseOut = () => {
-    setisHovering(false);
-  };
-
-  // const handleMouseOut = () => {
-  //   setisHovering(false);
-  //   settoggleData("main");
-  // };
-
-  // const handleShowClick = () => {
-  //   settoggleData("main");
-  // };
-
-  // const convertGeoData = async (postalCode) => {
-  //   const params = {
-  //     access_key: "bad9524e22348d9587f8b6ff5918fd23",
-  //     query: `${postalCode}`,
-  //     country: "CA",
-  //   };
-  //   try {
-  //     const response = await axios.get("http://api.positionstack.com/v1/forward", { params, maxRedirects: 0 });
-  //     console.log("GEOCODING:");
-  //     console.log(response.data);
-  //     // return response.data;
-  //   } catch (err) {
-  //     console.log(err);
-  //     return null;
-  //   }
-
-  //   // const res = await axios
-  //   //   .get("http://www.api.positionstack.com/v1/forward", { params })
-  //   //   .then((response) => {
-  //   //     console.log("GEOCODING:");
-  //   //     console.log(response.data);
-  //   //   })
-  //   //   .catch((error) => {
-  //   //     console.log("GEOCODING: ERROR");
-  //   //     console.log(error);
-  //   //   });
-  // };
-
-  // coOrdinates -> location
   const getData = async (toggle, coOrdinates, postalCode) => {
     const regex = /^[A-Z]\d[A-Z]\d[A-Z]\d$/;
     const formattedPS = postalCode.toUpperCase().replaceAll(" ", "");
@@ -113,21 +68,16 @@ function App() {
         return null;
       }
     } else if (toggle === "postalCode" && formattedPS !== "" && regex.test(formattedPS)) {
-      // console.log(`https://represent.opennorth.ca/postcodes/${formattedPS}/?sets=federal-electoral-districts`);
-
       try {
-        // convertGeoData(postalCode);
-        // const response = await axios.get(`https://represent.opennorth.ca/postcodes/${formattedPS}`);
-        // return response.data;
-        // http://localhost:4000/forward?access_key=bad9524e22348d9587f8b6ff5918fd23&query=l1t4e1&country=CA
-        // const res = await axios.get(`http://localhost:4000/forward?query=${postalCode}`);
+        // response will contain co-ordinates converted from a given postal code
+        // magic to convert geo-data happens on the backend
         const res = await axios.get("http://localhost:4000/forward", {
           params: {
             query: postalCode,
           },
         });
-        console.log(res.data);
 
+        console.log(res.data);
         // const lat = res.latitude;
         // const long = res.longitude;
         return getData("myLocation", res.data, "");
@@ -151,9 +101,6 @@ function App() {
     };
 
     fetchData();
-    // setresData(getData(toggleData, location, postalCode));
-    // console.log(`GetDATA: ${getData(toggleData, location, postalCode)}`);
-    // setresData(getData(toggleData, location, postalCode));
   }, [toggleData, location, postalCode]);
 
   return (
@@ -162,48 +109,7 @@ function App() {
 
       <ToggleOption onToggleData={handleToggleData} />
 
-      {toggleData === "null" && (
-        <>
-          {/* <div className="container-fluid justify-contents-center align-items-center">
-            <div className="d-flex justify-contents-center align-items-center"></div>
-          </div> */}
-          <div className="">
-            <div
-              className="container-fluid mt-5"
-              style={{ maxWidth: "1000px" }}
-              onMouseEnter={handleMouseOver}
-              onMouseOut={handleMouseOut}
-            >
-              <div className="text-center">
-                <div className="position-relative">
-                  <div>
-                    <img
-                      src={require("./politics.png")}
-                      className="img-fluid mx-auto d-block"
-                      alt="..."
-                      style={{ borderRadius: "4%", opacity: 1 }}
-                    />
-                    <div className="overlay">
-                      <h2>
-                        {" "}
-                        Get to know who represents the will of the people in your region. <br></br>{" "}
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-
-      {/* {`Loading: ${isLoading}`} */}
-      {/* {console.log(isLoading)}
-      {console.log(resData)}
-      {console.log(isLoading)} */}
-
-      {/* {console.log(`RizzData: ${resData}`)} */}
-      {/* {setresData(getData(toggleData, location, postalCode))} */}
+      {toggleData === "null" && <MainArt />}
 
       {console.log(resData)}
 
@@ -221,12 +127,6 @@ function App() {
       )}
       {toggleData === "mapLocation" && <Map />}
 
-      {/* {isHovering && (
-        <>
-          <div className="text-center pt-5"> Whack Me </div>
-        </>
-      )} */}
-
       {isLoading === true && (
         <div className="d-flex justify-content-center">
           <div className="spinner-border" role="status" style={{ width: "100px", height: "100px" }}>
@@ -234,14 +134,6 @@ function App() {
           </div>
         </div>
       )}
-      {/* 
-      {console.log(`Bruh: ${postalCode}`)}
-      {(dat = getData(toggleData, location, postalCode))}
-      {console.log(dat)} */}
-      {/* {console.log(`Blud is: `, toggleData, location, postalCode)} */}
-      {/* <MainData /> */}
-      {/* <PostalCode /> */}
-      {/* <Location /> */}
     </div>
   );
 }

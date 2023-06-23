@@ -1,26 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Location from "./Location.js";
-import PostalCode from "./PostalCode";
-import Map from "./Map.js";
-
-// instead of checking for for toggle here
-// do so in the
-
-// ensure that only relevant component is displayed
-// function Check(props) {
-//   if (props.toggle === "myLocation") {
-//     console.log("LOCATION");
-//     return <Location />;
-//   } else if (props.toggle === "postalCode") {
-//     console.log("POSTALCODE");
-//     return <PostalCode />;
-//   } else if (props.toggle === "mapLocation") {
-//     console.log("MAPLOCATION");
-//     return <Map />;
-//   } else {
-//     console.log("NULL");
-//   }
-// }
+import React, { useState } from "react";
 
 function ToggleOption({ onToggleData }) {
   const [toggle, setToggle] = useState("null");
@@ -29,12 +7,8 @@ function ToggleOption({ onToggleData }) {
     setToggle(e.target.value);
     // invoke callback function to pass
     onToggleData(e.target.value);
-    // Check(e.target.value);
-    // console.log("CHANGE");
-    // console.log(e.target.value);
   };
 
-  // useEffect(() => {}, [toggle]);
   return (
     <div className="container-fluid">
       <div className="lead d-flex justify-content-center pt-5">
@@ -82,11 +56,7 @@ function ToggleOption({ onToggleData }) {
           </label>
         </div>
       </div>
-      <div className="d-flex justify-content-center mt-2">
-        {/* {console.log(toggle)} */}
-        {/* Rendering only the desired data card component */}
-        {/* <Check toggle={toggle} /> */}
-      </div>
+      <div className="d-flex justify-content-center mt-2"></div>
     </div>
   );
 }
