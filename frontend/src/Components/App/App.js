@@ -8,9 +8,6 @@ import Map from "../Map";
 import MainData from "../MainData/MainData";
 import axios from "axios";
 import MainArt from "../MainArt/MainArt";
-// import politics from "./politics.png"
-
-// import Data from "../../data.json";
 
 //  https://represent.opennorth.ca/representatives/house-of-commons/?point=43.885,-79.053
 
