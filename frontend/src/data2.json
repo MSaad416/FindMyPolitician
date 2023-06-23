@@ -1,0 +1,64 @@
+{
+  "boundaries_centroid": [
+    {
+      "related": {
+        "boundary_set_url": "/boundary-sets/federal-electoral-districts/"
+      },
+      "boundary_set_name": "Federal electoral district",
+      "external_id": "35001",
+      "name": "Ajax",
+      "url": "/boundaries/federal-electoral-districts/35001/"
+    }
+  ],
+  "province": "ON",
+  "code": "L1T4K2",
+  "representatives_centroid": [
+    {
+      "district_name": "Ajax",
+      "name": "Mark Holland",
+      "party_name": "Liberal",
+      "photo_url": "https://www.ourcommons.ca/Content/Parliamentarians/Images/OfficialMPPhotos/44/HollandMark_Lib.jpg",
+      "elected_office": "MP",
+      "url": "https://www.ourcommons.ca/Members/en/mark-holland(25508)",
+      "offices": [
+        {
+          "tel": "1 613 995-8042",
+          "fax": "1 613 995-8042",
+          "postal": "House of Commons\nOttawa ON  K1A 0A6",
+          "type": "legislature"
+        },
+        {
+          "tel": "1 905 426-6808",
+          "fax": "1 905 426-9564",
+          "postal": "Main office - Ajax\n100 Old Kingston Road\nSuite 1\nAjax ON  L1T 2Z9",
+          "type": "constituency"
+        }
+      ],
+      "related": {
+        "representative_set_url": "/representative-sets/house-of-commons/",
+        "boundary_url": "/boundaries/federal-electoral-districts/35001/"
+      },
+      "representative_set_name": "House of Commons",
+      "last_name": "Holland",
+      "extra": {
+        "preferred_languages": [
+          "English"
+        ]
+      },
+      "source_url": "https://www.ourcommons.ca/Members/en/search?caucusId=all&province=all",
+      "first_name": "Mark",
+      "gender": "M",
+      "email": "mark.holland@parl.gc.ca",
+      "personal_url": ""
+    }
+  ],
+  "city": "Ajax",
+  "boundaries_concordance": [],
+  "centroid": {
+    "coordinates": [
+      -79.046123,
+      43.877835
+    ],
+    "type": "Point"
+  }
+}
