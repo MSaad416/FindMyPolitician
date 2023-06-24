@@ -68,7 +68,7 @@ function App() {
       try {
         // response will contain co-ordinates converted from a given postal code
         // magic to convert geo-data happens on the backend
-        const res = await axios.get("http://localhost:4000/forward", {
+        const res = await axios.get("https://findmypolitician-416.onrender.com/forward", {
           params: {
             query: postalCode,
           },

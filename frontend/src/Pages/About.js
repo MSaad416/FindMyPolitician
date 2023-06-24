@@ -16,7 +16,8 @@ function About() {
         <div className="container-md">
           <p className="lead text-center">
             This website was created to assist individuals in easily finding out information about thier political
-            representatives. API endpoints provided by OPEN NORTH are utilized to retrieve up to date information.{" "}
+            representatives. API endpoints provided by OPEN NORTH are utilized to retrieve up to date information. <br></br>
+            For any known bugs: leave an issue on the project's Github repo.
           </p>
         </div>
       </div>
