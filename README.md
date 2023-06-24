@@ -1,7 +1,7 @@
 # FindMyPolitician
 > Find your local politicians easily.
 
-> Live demo: [_here_](https://spotify-stats.herokuapp.com/)
+> Live demo: [_here_](https://findmypolitician.netlify.app)
 
 
 ## Technologies Used
