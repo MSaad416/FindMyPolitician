@@ -1,16 +1,16 @@
-import { useState } from "react";
-import "../Components/App/App";
+import {useState} from 'react';
+import '../Components/App/App';
 
-function PostalCode({ postcode, setPostalcode }) {
+function PostalCode({postcode, setPostalcode}) {
   // useState hook init to empty string
-  const [tempCode, settempCode] = useState("");
+  const [tempCode, settempCode] = useState('');
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     // e.preventDefault();
     settempCode(e.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     setPostalcode(tempCode);
   };
@@ -18,7 +18,9 @@ function PostalCode({ postcode, setPostalcode }) {
   return (
     <div className="container-fluid">
       <div className="container-fluid">
-        <div className="lead d-flex justify-content-center pt-4">Enter your postal code below</div>
+        <div className="lead d-flex justify-content-center pt-4" style={{color: 'white'}}>
+          Enter your postal code below
+        </div>
       </div>
 
       <div className="container-fluid">

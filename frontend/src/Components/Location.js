@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 
-function Location({ location, setLocation }) {
+function Location({location, setLocation}) {
   const checkLocation = () => {
     if (navigator.geolocation) navigator.geolocation.getCurrentPosition(setLocation, error);
-    else console.log("Geolocation not detected.");
+    else console.log('Geolocation not detected.');
   };
 
   function error() {
-    alert("Unable to retrieve your location. Try a different option.");
+    alert('Unable to retrieve your location. Try a different option.');
   }
 
   return (
     <div className="container-fluid">
-      <div className="d-flex justify-content-center pt-4">
+      <div className="d-flex justify-content-center pt-4" style={{color: 'white'}}>
         {location.length === 0 ? (
-          <button className="btn btn-outline-dark" onClick={checkLocation}>
+          <button className="btn btn-outline-light" onClick={checkLocation}>
             Get Location
           </button>
         ) : null}

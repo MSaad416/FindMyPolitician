@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 
-function ToggleOption({ onToggleData }) {
-  const [toggle, setToggle] = useState("null");
+function ToggleOption({onToggleData}) {
+  const [toggle, setToggle] = useState('null');
 
-  const onToggle = (e) => {
+  const onToggle = e => {
     setToggle(e.target.value);
     // invoke callback function to pass
     onToggleData(e.target.value);
@@ -11,7 +11,7 @@ function ToggleOption({ onToggleData }) {
 
   return (
     <div className="container-fluid">
-      <div className="lead d-flex justify-content-center pt-5">
+      <div className="lead d-flex justify-content-center pt-5" style={{color: 'white'}}>
         To meet your Canadian political representatives choose one of the below options.
       </div>
       <div className="d-flex justify-content-center mt-2">
@@ -22,7 +22,7 @@ function ToggleOption({ onToggleData }) {
             name="options"
             value="myLocation"
             id="option1"
-            checked={toggle === "myLocation"}
+            checked={toggle === 'myLocation'}
             onChange={onToggle}
           />
           <label className="btn btn-primary" htmlFor="option1">
@@ -35,7 +35,7 @@ function ToggleOption({ onToggleData }) {
             name="options"
             value="postalCode"
             id="option2"
-            checked={toggle === "postalCode"}
+            checked={toggle === 'postalCode'}
             onChange={onToggle}
           />
           <label className="btn btn-primary" htmlFor="option2">
@@ -48,7 +48,7 @@ function ToggleOption({ onToggleData }) {
             name="options"
             value="mapLocation"
             id="option3"
-            checked={toggle === "mapLocation"}
+            checked={toggle === 'mapLocation'}
             onChange={onToggle}
           />
           <label className="btn btn-primary" htmlFor="option3">
